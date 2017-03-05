@@ -1,5 +1,5 @@
 -module(recursion).
--export([factorial/1, factorialSafe/1, fib/1, pieces/1, factorial_tail/1, sum/2, max2/2, perfect/1]).
+-export([factorial/1, factorialSafe/1, fib/1, pieces/1, factorial_tail/1, sum/2, max2/2, perfect/1, fib_tail/1]).
 
 factorial(0) ->
   1;
@@ -38,6 +38,14 @@ perfect(N, D, A) ->
     0 -> perfect(N, D - 1, A + D);
     _ -> perfect(N, D - 1, A)
   end.
+
+fib_tail(N) ->
+  fib_tail(N, 0, 1).
+fib_tail(0, P, _) ->
+  P;
+fib_tail(N, P, C) ->
+  fib_tail(N - 1, C, P + C).
+
 
 sum(F, N) when N >= 0 ->
   sum(F, N, 0).
